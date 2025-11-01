@@ -117,7 +117,7 @@
 
         <!-- Section 1: Hero -->
         <section id="home" class="text-center pt-16 pb-24">
-            <!-- Added Logo Image -->
+            <!-- CRITICAL FIX: Changed src to use relative path for FM-logo.png -->
             <img src="FM logo.png" alt="FlashMoon Logo" class="mx-auto w-32 h-32 mb-6 rounded-full shadow-xl border-4 border-indigo-200">
             <h1 class="text-4xl md:text-6xl font-bold text-indigo-800 mb-4" data-key="appTitleShort">FlashMoon (FM)</h1>
             <p class="text-xl md:text-2xl text-gray-700 mb-10 max-w-3xl mx-auto" data-key="heroSubtitle">
@@ -333,6 +333,7 @@
                 </div>
             </div>
 
+            
             <!-- Burn Mechanism -->
             <div class="max-w-4xl mx-auto mt-16 pt-10 border-t border-gray-200">
                 <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center" data-key="hyperDeflationTitle">กลไก Hyper-Deflationary (การลดอุปทาน)</h3>
@@ -450,6 +451,8 @@
     </footer>
 
     <script>
+        const API_KEY = ""; // Placeholder for Gemini API Key
+
         const LANG_DATA = {
             th: {
                 appTitle: 'FlashMoon (FM) - Interactive Whitepaper',
@@ -477,7 +480,6 @@
                 visionTitle: 'วิสัยทัศน์และคุณค่าหลัก',
                 visionDesc: 'วิสัยทัศน์ของ FlashMoon คือการเป็นโครงสร้างพื้นฐานหลักสำหรับการ **การสร้างรายได้ออนไลน์ยุคใหม่** โดยการแปลงผู้ใช้งานทั่วไปให้กลายเป็นผู้สร้างมูลค่าที่แท้จริงบนโลกดิจิทัล จุดมุ่งหมายคือการจัดหาเครื่องมือที่ทุกคนสามารถใช้เพื่อสร้างกระแสรายได้แบบกระจายศูนย์อย่างแท้จริง',
                 decentralizedTitle: 'Decentralised',
-                decentralizedDesc: 'ไร้ตัวกลาง 100% ระบบทำงานด้วย Smart Contract ไม่มีอำนาจควบคุม',
                 safeBSCTitle: 'Safe on BSC',
                 safeBSCDesc: 'ทำงานบน Binance Smart Chain (BSC) ที่ปลอดภัยและมีค่าธรรมเนียมต่ำ',
                 zeroCutTitle: 'Zero-Cut Policy',
@@ -528,6 +530,20 @@
                 burn2Title: '💥 10% Annual Mega-Burn:',
                 burn2Desc: ' 10% ของอุปทานคงเหลือทั้งหมด จะถูกเผาทิ้งทุกปี',
                 simulateBurnBtn: 'จำลองการเผาเหรียญประจำปี (10 ปี)',
+                llmToolsTitle: 'เครื่องมือวิเคราะห์ด้วย AI ✨ (Gemini)',
+                compareToolTitle: '1. เปรียบเทียบโทเคน FlashMoon (FM)',
+                compareToolDesc: 'ใช้ AI วิเคราะห์ความแตกต่างของวิสัยทัศน์ FM เทียบกับโทเคนชั้นนำในตลาด',
+                selectTokenPlaceholder: '-- เลือกโทเคนคู่แข่ง --',
+                tokenOption1: 'Bitcoin (BTC)',
+                tokenOption2: 'Ethereum (ETH)',
+                tokenOption3: 'โทเคน DeFi ทั่วไป',
+                compareBtnText: 'เปรียบเทียบ',
+                explainToolTitle: '2. เจาะลึกกลไก Matrix (100% Commission)',
+                explainToolDesc: 'ใช้ AI อธิบายหลักการทำงานของระบบ Matrix, Spillover, และ Re-booking ให้เข้าใจง่ายภายใน 1 ย่อหน้า',
+                explainMatrixBtnText: 'อธิบายกลไก',
+                llmOutputLabel: 'ผลการวิเคราะห์โดย Gemini AI:',
+                llmDefaultText: 'เลือกเครื่องมือวิเคราะห์ด้านบนเพื่อเริ่มต้น',
+                loadingText: 'กำลังวิเคราะห์... โปรดรอสักครู่ 🚀',
                 roadmapTitle: 'แผนงาน (Roadmap)',
                 roadmapDesc: 'FlashMoon มุ่งเน้นการพัฒนาที่รวดเร็ว โดยระบบหลักส่วนใหญ่ได้เปิดใช้งานแล้ว และกำลังมุ่งหน้าสู่การขยายตลาดและอำนาจการกำกับดูแล',
                 launchedStatus: 'เปิดตัวแล้ว (Launched)',
@@ -568,6 +584,7 @@
                 visionTitle: 'Vision and Core Values',
                 visionDesc: 'FlashMoon\'s vision is to be the core infrastructure for the **New Era of Online Income**, transforming ordinary users into true value creators in the digital world. The goal is to provide tools that everyone can use to generate decentralized income streams.',
                 decentralizedTitle: 'Decentralised',
+                decentralizedDesc: "100% decentralized system runs on Smart Contract with no governing authority.",
                 safeBSCTitle: 'Safe on BSC',
                 safeBSCDesc: 'Operates on the secure and low-fee Binance Smart Chain (BSC).',
                 zeroCutTitle: 'Zero-Cut Policy',
@@ -613,12 +630,25 @@
                 marketSource: 'Data referenced from the PancakeSwap V2 trading Pool via GeckoTerminal as of Oct 31, 2025',
                 checkPriceBtn: 'Check Live Price and Liquidity',
                 hyperDeflationTitle: 'Hyper-Deflationary Mechanism',
-                hyperDeflationDesc: 'FM uses a 2-tier burning mechanism to reduce supply and increase long-term value, ensuring scarcity based on ecosystem usage.',
                 burn1Title: '🔥 5% Utility-Driven Burn:',
                 burn1Desc: ' 5% of all ecosystem transactions are burned instantly.',
                 burn2Title: '💥 10% Annual Mega-Burn:',
                 burn2Desc: ' 10% of the remaining total supply is burned annually.',
                 simulateBurnBtn: 'Simulate Annual Token Burn (10 Years)',
+                llmToolsTitle: 'AI Analysis Tools ✨ (Gemini)',
+                compareToolTitle: '1. Compare FlashMoon (FM) Token',
+                compareToolDesc: 'Use AI to analyze the differences in FM\'s vision against leading tokens in the market.',
+                selectTokenPlaceholder: '-- Select Competitor Token --',
+                tokenOption1: 'Bitcoin (BTC)',
+                tokenOption2: 'Ethereum (ETH)',
+                tokenOption3: 'General DeFi Tokens',
+                compareBtnText: 'Compare',
+                explainToolTitle: '2. Deep Dive into Matrix Mechanism (100% Commission)',
+                explainToolDesc: 'Use AI to explain the Matrix system, Spillover, and Re-booking in 1 easy-to-understand paragraph.',
+                explainMatrixBtnText: 'Explain Mechanism',
+                llmOutputLabel: 'Analysis Result by Gemini AI:',
+                llmDefaultText: 'Select an analysis tool above to begin.',
+                loadingText: 'Analyzing... Please wait 🚀',
                 roadmapTitle: 'Roadmap',
                 roadmapDesc: 'FlashMoon focuses on rapid development; most core systems are live, and we are now moving towards market expansion and governance.',
                 launchedStatus: 'Launched',
@@ -659,6 +689,7 @@
                 visionTitle: '愿景与核心价值',
                 visionDesc: 'FlashMoon 的愿景是成为**在线收益新时代**的核心基础设施，将普通用户转变为数字世界的真正价值创造者。目标是提供人人都能使用的工具，生成去中心化的收入流。',
                 decentralizedTitle: 'Decentralised',
+                decentralizedDesc: "100%去中心化系统，通过智能合约运行，无治理权限。",
                 safeBSCTitle: 'Safe on BSC',
                 safeBSCDesc: '在安全且低费用的币安智能链 (BSC) 上运行。',
                 zeroCutTitle: 'Zero-Cut Policy',
@@ -700,32 +731,45 @@
                 priceLabel: '最新价格 (Oct 31, 2025)',
                 liquidityLabel: '流动性',
                 volumeLabel: '24 小时交易量和变化',
-                marketSource: '数据参考自 GeckoTerminal 上的 PancakeSwap V2 交易池，截至 2025 年 10 月 31 日',
+                marketSource: '数据参考自 GeckoTerminal上的 PancakeSwap V2 交易池，截至 2025 年 10 月 31 日',
                 checkPriceBtn: '查看实时价格和流动性',
                 hyperDeflationTitle: '超通缩机制',
-                hyperDeflationDesc: 'FM 使用 2-tier 燃烧机制来减少供应和增加长期价值，确保稀缺性基于生态系统使用。',
                 burn1Title: '🔥 5% 实用驱动燃烧:',
                 burn1Desc: ' 5% 的所有生态系统交易被立即销毁。',
                 burn2Title: '💥 10% 年度大型燃烧:',
                 burn2Desc: ' 10% 的剩余总供应量每年被销毁。',
-                simulateBurnBtn: '模拟年度代币燃烧 (10 ปี)',
+                simulateBurnBtn: '模拟年度代币燃烧 (10年)',
+                llmToolsTitle: 'AI Analysis Tools ✨ (Gemini)',
+                compareToolTitle: '1. Compare FlashMoon (FM) Token',
+                compareToolDesc: 'Use AI to analyze the differences in FM\'s vision against leading tokens in the market.',
+                selectTokenPlaceholder: '-- Select Competitor Token --',
+                tokenOption1: 'Bitcoin (BTC)',
+                tokenOption2: 'Ethereum (ETH)',
+                tokenOption3: 'General DeFi Tokens',
+                compareBtnText: 'Compare',
+                explainToolTitle: '2. Deep Dive into Matrix Mechanism (100% Commission)',
+                explainToolDesc: 'Use AI to explain the Matrix system, Spillover, and Re-booking in 1 easy-to-understand paragraph.',
+                explainMatrixBtnText: 'Explain Mechanism',
+                llmOutputLabel: 'Analysis Result by Gemini AI:',
+                llmDefaultText: 'Select an analysis tool above to begin.',
+                loadingText: 'Analyzing... Please wait 🚀',
                 roadmapTitle: '路线图',
-                roadmapDesc: 'FlashMoon มุ่งเน้นการพัฒนาที่รวดเร็ว โดยระบบหลักส่วนใหญ่ได้เปิดใช้งานแล้ว และกำลังมุ่งหน้าสู่การขยายตลาดและอำนาจการกำกับดูแล',
+                roadmapDesc: 'FlashMoon 专注于快速发展；大部分核心系统已上线，目前正朝着市场扩张和治理权转移的目标迈进。',
                 launchedStatus: '已上线 (Launched)',
                 launchedTitle: '核心实用系统',
                 launchedFeature1: '**NFT Matrix:** Packages & Re-booking',
-                launchedFeature2: '**Token Utility:** FM Coins & Staking',
-                launchedFeature3: '**DeFi Engine:** Auto Plus / Super Plus',
-                launchedFeature4: '**Product:** Crypto Card, Moon Stone Gacha',
+                launchedFeature2: '**代币实用性:** FM Coins & Staking',
+                launchedFeature3: '**DeFi 引擎:** Auto Plus / Super Plus',
+                launchedFeature4: '**产品:** Crypto Card, Moon Stone Gacha',
                 nextPhaseStatus: '下一阶段 (近期)',
                 nextPhaseTitle: '市场和社区扩展',
                 nextFeature1: '推出 Market Place (电子商务平台)',
-                nextFeature2: 'Jackpot 500 Event',
+                nextFeature2: 'Jackpot 500 活动',
                 nextFeature3: '智能合约审计',
                 sovereigntyStatus: '主权 (最终目标)',
                 sovereigntyTitle: '治理权限',
                 sovereigntyFeature1: '将治理权转移给社区',
-                footerCopyright: '&copy; 2025 FlashMoon. All rights reserved.'
+                footerCopyright: '© 2025 FlashMoon. 保留所有权利。'
             }
         };
 
@@ -800,7 +844,21 @@
             // Use static chartColors
             const colors = chartColors;
             // Provide default labels in case LANG_DATA isn't ready
-            const labels = ['ชุมชน / Airdrop', 'สภาพคล่องเริ่มต้น', 'ทีมงาน / พัฒนา', 'ระบบนิเวศ'];
+            const labels = [
+                LANG_DATA[currentLang].distributionLabel1 || 'Community / Airdrop',
+                LANG_DATA[currentLang].distributionLabel2 || 'Initial Liquidity',
+                LANG_DATA[currentLang].distributionLabel3 || 'Team / Development',
+                LANG_DATA[currentLang].distributionLabel4 || 'Ecosystem'
+            ];
+            
+            // Add fallback labels to LANG_DATA for chart clarity
+            if (!LANG_DATA[currentLang].distributionLabel1) {
+                LANG_DATA[currentLang].distributionLabel1 = labels[0];
+                LANG_DATA[currentLang].distributionLabel2 = labels[1];
+                LANG_DATA[currentLang].distributionLabel3 = labels[2];
+                LANG_DATA[currentLang].distributionLabel4 = labels[3];
+            }
+
 
             const distributionCtx = document.getElementById('distributionChart').getContext('2d');
             distributionChartInstance = new Chart(distributionCtx, {
@@ -809,7 +867,7 @@
                     labels: labels,
                     datasets: [{
                         label: 'การจัดสรรโทเคน',
-                        data: [15, 40, 20, 25], // Community, Liquidity, Team, Ecosystem
+                        data: [15, 40, 20, 25], // Community, Liquidity, Team, Ecosystem (Example split)
                         backgroundColor: [
                             'rgba(79, 70, 229, 0.8)',  // Indigo
                             'rgba(59, 130, 246, 0.8)', // Blue
@@ -853,16 +911,24 @@
             const years = 10;
             let supply = initialSupply;
             
+            // Add fallback keys for chart display
+            if (!LANG_DATA[currentLang].burnYear0) {
+                LANG_DATA[currentLang].burnYear0 = 'Year 0';
+                LANG_DATA[currentLang].burnYear = 'Year';
+                LANG_DATA[currentLang].burnLabel = 'Remaining Supply';
+                LANG_DATA[currentLang].burnTooltipText = 'Supply';
+            }
+            
             if (initial) {
-                return { labels: [LANG_DATA[currentLang].burnYear0 || 'ปีที่ 0'], data: [initialSupply] };
+                return { labels: [LANG_DATA[currentLang].burnYear0], data: [initialSupply] };
             }
 
-            const labels = [LANG_DATA[currentLang].burnYear0 || 'ปีที่ 0'];
-            const data = [supply];
+            const labels = [LANG_DATA[currentLang].burnYear0];
+            const data = [initialSupply];
             
             for (let i = 1; i <= years; i++) {
                 supply *= 0.90; // 10% burn
-                labels.push(`${LANG_DATA[currentLang].burnYear || 'ปีที่'} ${i}`);
+                labels.push(`${LANG_DATA[currentLang].burnYear} ${i}`);
                 data.push(supply);
             }
             return { labels, data };
@@ -875,7 +941,7 @@
             // Use static chartColors
             const colors = chartColors;
             // Provide default label
-            const labelKey = LANG_DATA[currentLang].burnLabel || 'Remaining Supply';
+            const labelKey = LANG_DATA[currentLang].burnLabel;
 
             const burnChartCtx = document.getElementById('burnChart').getContext('2d');
             burnChart = new Chart(burnChartCtx, {
@@ -925,7 +991,7 @@
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    return `${LANG_DATA[currentLang].burnTooltipText || ' อุปทาน'}: ${context.raw.toLocaleString(currentLang, {maximumFractionDigits: 0})} FM`;
+                                    return `${LANG_DATA[currentLang].burnTooltipText}: ${context.raw.toLocaleString(currentLang, {maximumFractionDigits: 0})} FM`;
                                 }
                             }
                         }
@@ -936,12 +1002,13 @@
         
         // --- NEW DATA STRUCTURE FOR IMAGES ---
         const LANG_FLAG_URLS = {
-            // Placeholder URLs (Replace with direct links to high-quality images)
-            th: "https://placehold.co/100x100/A51931/ffffff?text=TH", 
-            en: "https://placehold.co/100x100/00247d/ffffff?text=UK",
-            zh: "https://placehold.co/100x100/EE1C23/ffffff?text=CN" 
+            // Updated to use the correct flag URLs
+            th: "https://flagcdn.com/w160/th.png", // Thai Flag
+            en: "https://flagcdn.com/w160/gb.png", // UK Flag
+            zh: "https://flagcdn.com/w160/cn.png"  // China Flag
         };
 
+        // --- Initializers ---
 
         document.addEventListener('DOMContentLoaded', () => {
             
@@ -953,6 +1020,39 @@
                 }
             });
             
+            // Add fallback text for chart labels
+            if (!LANG_DATA.th.distributionLabel1) {
+                LANG_DATA.th.distributionLabel1 = 'ชุมชน / Airdrop';
+                LANG_DATA.th.distributionLabel2 = 'สภาพคล่องเริ่มต้น';
+                LANG_DATA.th.distributionLabel3 = 'ทีมงาน / พัฒนา';
+                LANG_DATA.th.distributionLabel4 = 'ระบบนิเวศ';
+                LANG_DATA.th.burnYear0 = 'ปีที่ 0';
+                LANG_DATA.th.burnYear = 'ปีที่';
+                LANG_DATA.th.burnLabel = 'อุปทานคงเหลือ';
+                LANG_DATA.th.burnTooltipText = 'อุปทาน';
+            }
+            if (!LANG_DATA.en.distributionLabel1) {
+                LANG_DATA.en.distributionLabel1 = 'Community / Airdrop';
+                LANG_DATA.en.distributionLabel2 = 'Initial Liquidity';
+                LANG_DATA.en.distributionLabel3 = 'Team / Development';
+                LANG_DATA.en.distributionLabel4 = 'Ecosystem';
+                LANG_DATA.en.burnYear0 = 'Year 0';
+                LANG_DATA.en.burnYear = 'Year';
+                LANG_DATA.en.burnLabel = 'Remaining Supply';
+                LANG_DATA.en.burnTooltipText = 'Supply';
+            }
+            if (!LANG_DATA.zh.distributionLabel1) {
+                LANG_DATA.zh.distributionLabel1 = '社区 / 空投';
+                LANG_DATA.zh.distributionLabel2 = '初始流动性';
+                LANG_DATA.zh.distributionLabel3 = '团队 / 开发';
+                LANG_DATA.zh.distributionLabel4 = '生态系统';
+                LANG_DATA.zh.burnYear0 = '第 0 年';
+                LANG_DATA.zh.burnYear = '第';
+                LANG_DATA.zh.burnLabel = '剩余供应';
+                LANG_DATA.zh.burnTooltipText = '供应';
+            }
+
+
             setLanguage(currentLang); // Load default language (TH)
 
             // --- Navigation Logic ---
@@ -1054,4 +1154,3 @@
     </script>
 </body>
 </html>
-
